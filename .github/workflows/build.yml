@@ -23,17 +23,24 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: Check project files
+      - name: Check Java
+        run: java -version
+
+      - name: Check project
         run: |
           pwd
+          echo "=== Project ==="
           ls -la
+          echo "=== Gradle ==="
           ls -la gradle
-          ls -la app
+          echo "=== Wrapper ==="
+          ls -la gradlew
 
-      - name: Check Gradle wrapper
-        run: |
-          chmod +x gradlew
-          ./gradlew --version
+      - name: Make Gradle executable
+        run: chmod +x gradlew
+
+      - name: Check Gradle
+        run: ./gradlew --version
 
       - name: Build Debug APK
         run: ./gradlew clean assembleDebug --stacktrace
