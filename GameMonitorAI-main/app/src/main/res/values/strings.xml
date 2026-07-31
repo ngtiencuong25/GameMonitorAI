@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">GameMonitor AI</string>
+    <string name="overlay_service_description">GameMonitor AI overlay displays real-time metrics while gaming.</string>
+</resources>
