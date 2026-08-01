@@ -9,10 +9,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: GameMonitorAI-main
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -23,30 +19,20 @@ jobs:
           distribution: temurin
           java-version: "17"
 
-      - name: Check Java
-        run: java -version
-
-      - name: Check project
-        run: |
-          pwd
-          echo "=== Project ==="
-          ls -la
-          echo "=== Gradle ==="
-          ls -la gradle
-          echo "=== Wrapper ==="
-          ls -la gradlew
-
       - name: Make Gradle executable
         run: chmod +x gradlew
+
+      - name: Check Java
+        run: java -version
 
       - name: Check Gradle
         run: ./gradlew --version
 
       - name: Build Debug APK
-        run: ./gradlew clean assembleDebug --stacktrace
+        run: ./gradlew assembleDebug
 
-      - name: Upload APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: app-debug
-          path: GameMonitorAI-main/app/build/outputs/apk/debug/app-debug.apk
+          path: app/build/outputs/apk/debug/app-debug.apk
