@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<foreground-service>
+    <special-use>
+        <description>GameMonitor AI overlay displays real-time performance metrics while gaming. The foreground service is required to keep the overlay visible and responsive over other apps.</description>
+    </special-use>
+</foreground-service>
